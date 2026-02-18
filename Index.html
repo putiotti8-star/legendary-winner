@@ -1,0 +1,92 @@
+!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahesh Portfolio</title>
+</head>
+<body id="myBody" style="text-align: center; background-color: #87CEEB; color: white; font-family: sans-serif; padding: 20px; transition: 0.5s;">
+
+    <div id="clock" style="font-size: 40px; background: rgba(0,0,0,0.2); display: inline-block; padding: 10px 20px; border-radius: 15px; margin-bottom: 20px; font-family: monospace; text-shadow: 0 0 10px #fff;">
+        00:00:00
+    </div>
+
+    <marquee behavior="alternate" scrollamount="3">
+        <span style="font-size: 60px;">☁️ ☁️ ☁️</span>
+    </marquee>
+
+    <h1>Hello, I am Mahesh!</h1>
+    
+    <div style="margin: 20px 0;">
+    <img src="myphoto.jpg" alt="BCA Group Photo" 
+         style="width: 90%; max-width: 400px; border-radius: 20px; border: 8px solid white; box-shadow: 0px 10px 25px rgba(0,0,0,0.3);">
+</div>
+
+
+    </div>
+
+    <h3>"BCA Group Learning Together"</h3>
+
+    <div style="font-family: monospace; font-size: 22px; margin-bottom: 20px;">
+        I Love <span id="typing" style="color: yellow; font-weight: bold;"></span>
+    </div>
+
+    <div style="margin-top: 30px;">
+        <button onclick="toggleTheme()" id="themeBtn" style="padding: 12px 24px; border-radius: 30px; border: none; font-weight: bold; background: #333; color: white; margin-bottom: 10px;">
+            🌙 Switch to Dark Mode
+        </button>
+    <div style="margin-top: 25px;">
+    <a href="https://www.instagram.com/itzmaheshbabu786" target="_blank" style="text-decoration: none;">
+        <div style="display: inline-flex; align-items: center; background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: white; padding: 12px 25px; border-radius: 15px; font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transform: scale(1); transition: 0.3s;" 
+             onmouseover="this.style.transform='scale(1.1)'" 
+             onmouseout="this.style.transform='scale(1)'">
+            <span style="font-size: 22px; margin-right: 12px;">📸</span> 
+            Follow @itzmaheshbabu786
+        </div>
+    </a>
+</div>
+
+        </div>
+    </a>
+</div>
+
+
+    <script>
+        // घड़ी चलाने का कोड
+        function showTime(){
+            var date = new Date();
+            document.getElementById("clock").innerText = date.toLocaleTimeString();
+            setTimeout(showTime, 1000);
+        }
+        showTime();
+
+        // डार्क मोड का कोड
+        function toggleTheme() {
+            var body = document.getElementById("myBody");
+            var btn = document.getElementById("themeBtn");
+            if (body.style.backgroundColor !== "rgb(34, 34, 34)") {
+                body.style.backgroundColor = "#222";
+                btn.innerHTML = "☀️ Switch to Light Mode";
+                btn.style.background = "white"; btn.style.color = "black";
+            } else {
+                body.style.backgroundColor = "#87CEEB";
+                btn.innerHTML = "🌙 Switch to Dark Mode";
+                btn.style.background = "#333"; btn.style.color = "white";
+            }
+        }
+
+        // टाइपिंग एनीमेशन
+        var words = ["Coding", "BCA", "Learning"];
+        var i = 0, j = 0, isDeleting = false;
+        function type() {
+            var currentWord = words[i];
+            document.getElementById("typing").innerText = isDeleting ? currentWord.substring(0, j-1) : currentWord.substring(0, j+1);
+            isDeleting ? j-- : j++;
+            if (!isDeleting && j == currentWord.length) isDeleting = true;
+            else if (isDeleting && j == 0) { isDeleting = false; i = (i + 1) % words.length; }
+            setTimeout(type, 150);
+        }
+        type();
+    </script>
+</body>
+</html>
